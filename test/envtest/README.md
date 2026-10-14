@@ -44,6 +44,14 @@ API server, including on failure. The current kubeconfig is never used.
   non-positive values. Accepted values remain readable by typed Get/List.
   A typed fixture is converted to unstructured input and only its timeout is
   replaced with a raw string, so validation happens on the server.
+- Responses opt-in creates tenant-local storage mounts, init-container key
+  preparation, named gRPC readiness and standard API routes without a model.
+  Secret metadata changes roll the key snapshot; unsupported retention withdraws
+  the old stateful workload/routes, and disabling retains database credentials.
+  This scenario extends only the local pinned AITenant fixture to accept Responses;
+  production schema/defaulting validation remains in MaaS.
+  ExternalModel ExtProc has exactly one selecting controller policy before opt-in,
+  while enabled and after disablement, restricting ingress to its resolved Gateway.
 
 Tests use Go's `testing` package and testify. The scenario states its
 preconditions, user action and expected outcome. Small typed builders describe
